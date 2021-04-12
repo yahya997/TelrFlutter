@@ -14,19 +14,21 @@ class TelrFlutter {
 
   TelrFlutter({@required this.configuration});
 
-  Future<bool> _startTransaction() async {
-    final bool status = await _channel.invokeMethod<bool>('startTransaction', {
+  Future<String> _startTransaction() async {
+    final String transActionId =
+        await _channel.invokeMethod<String>('startTransaction', {
       "config": configuration.toMap(),
       "billingAddress": billingAddress.toMap(),
       "transaction": transaction.toMap(),
     });
-    log(status.toString());
-    return status;
+    log(transActionId.toString());
+    print("=-=-=-=-=-== TRANACTION ID YA PRINCE -=-=> $transActionId");
+    return transActionId;
   }
 
-  Future<bool> makePayment({@required Transaction transaction}) async {
+  Future<String> makePayment({@required Transaction transaction}) async {
     if (billingAddress == null) {
-      return false;
+      return null;
     }
     this.transaction = transaction;
     return _startTransaction();
