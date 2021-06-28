@@ -94,7 +94,7 @@ class TelrTransaction(
         name.first = billingAddress["firstName"] // Forename : the minimum required details for a transaction to be processed
         name.last = billingAddress["lastName"] // Surname : the minimum required details for a transaction to be processed
         name.title = "Mr" // Title
-        billing.name = name
+        //billing.name = name
         billing.email = config["email"].toString() //stackfortytwo@gmail.com : the minimum required details for a transaction to be processed.
         billing.setPhone(billingAddress["phoneNumber"])
         mobile.billing = billing
