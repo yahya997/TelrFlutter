@@ -43,7 +43,7 @@ class TelrTransaction(
 
         val args = call.arguments as Map<String, Any>
         val config = args["config"] as Map<String, Any>
-        val billingAddress = args["billingAddress"] as Map<String, String>
+       // val billingAddress = args["billingAddress"] as Map<String, String>
         val transaction = args["transaction"] as Map<String, String>
         val mobile = MobileRequest()
         mobile.store = config["storeId"].toString()
@@ -82,14 +82,21 @@ class TelrTransaction(
         mobile.tran = tran
         val billing = Billing()
         val address = Address()
-     // Street address – line 1: the minimum required details for a transaction to be processed
+       /* address.city = billingAddress["city"] // City : the minimum required details for a transaction to be processed
+        address.country = billingAddress["country"]?.toUpperCase(Locale.getDefault()) // Country : Country must be sent as a 2 character ISO code. A list of country codes can be found at the end of this document. the minimum required details for a transaction to be processed
+        address.region = billingAddress["region"] // Region
+        address.line1 = billingAddress["line"] // Street address – line 1: the minimum required details for a transaction to be processed
         //address.setLine2("SIT G=Towe");               // (Optinal)
         //address.setLine3("SIT G=Towe");               // (Optinal)
         //address.setZip("SIT G=Towe");                 // (Optinal)
         billing.address = address
-
+        val name = Name()
+        name.first = billingAddress["firstName"] // Forename : the minimum required details for a transaction to be processed
+        name.last = billingAddress["lastName"] // Surname : the minimum required details for a transaction to be processed
+        name.title = "Mr" // Title
+        billing.name = name
         billing.email = config["email"].toString() //stackfortytwo@gmail.com : the minimum required details for a transaction to be processed.
-        billing.setPhone(billingAddress["phoneNumber"])
+        billing.setPhone(billingAddress["phoneNumber"])*/
         mobile.billing = billing
         return mobile
     }
