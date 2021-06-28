@@ -82,19 +82,12 @@ class TelrTransaction(
         mobile.tran = tran
         val billing = Billing()
         val address = Address()
-        address.city = billingAddress["city"] // City : the minimum required details for a transaction to be processed
-        address.country = billingAddress["country"]?.toUpperCase(Locale.getDefault()) // Country : Country must be sent as a 2 character ISO code. A list of country codes can be found at the end of this document. the minimum required details for a transaction to be processed
-        address.region = billingAddress["region"] // Region
-        address.line1 = billingAddress["line"] // Street address – line 1: the minimum required details for a transaction to be processed
+     // Street address – line 1: the minimum required details for a transaction to be processed
         //address.setLine2("SIT G=Towe");               // (Optinal)
         //address.setLine3("SIT G=Towe");               // (Optinal)
         //address.setZip("SIT G=Towe");                 // (Optinal)
         billing.address = address
-        val name = Name()
-        name.first = billingAddress["firstName"] // Forename : the minimum required details for a transaction to be processed
-        name.last = billingAddress["lastName"] // Surname : the minimum required details for a transaction to be processed
-        name.title = "Mr" // Title
-        //billing.name = name
+
         billing.email = config["email"].toString() //stackfortytwo@gmail.com : the minimum required details for a transaction to be processed.
         billing.setPhone(billingAddress["phoneNumber"])
         mobile.billing = billing
