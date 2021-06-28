@@ -93,7 +93,7 @@ class TelrTransaction(
         val name = Name()
         name.first = billingAddress["firstName"] // Forename : the minimum required details for a transaction to be processed
         name.last = billingAddress["lastName"] // Surname : the minimum required details for a transaction to be processed
-        name.title = "Mr" // Title
+        name.title = "" // Title
         billing.name = name
         billing.email = config["email"].toString() //stackfortytwo@gmail.com : the minimum required details for a transaction to be processed.
         billing.setPhone(billingAddress["phoneNumber"])
