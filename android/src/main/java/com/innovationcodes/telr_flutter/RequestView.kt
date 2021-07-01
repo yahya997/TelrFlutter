@@ -20,7 +20,7 @@ class RequestView : WebviewActivity() {
     override fun onStatusFailed(response: ResponseEntity<*>?) {
         val res = response?.body as StatusResponse
         println(res.trace)
-        result.success('0')
+        result.success(0)
         finish()
     }
 
